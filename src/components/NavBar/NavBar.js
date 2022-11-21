@@ -1,4 +1,6 @@
 import React from "react";
+import "../CarWidget/CarWidget.js";
+import CarWidget from "../CarWidget/CarWidget.js";
 import "./NavBar.css";
 
 const Navbar = () => {
@@ -6,7 +8,7 @@ const Navbar = () => {
     <div className="menu-container">
       <div className="nav-logo">
         <a Classname="nav-link" href="#">
-          Logo Inicio
+          CompraOnline
         </a>
       </div>
       <ul className="nav-list">
@@ -26,7 +28,7 @@ const Navbar = () => {
           </a>
         </li>
         <li>
-          🛒<span>0</span>
+          <CarWidget />
         </li>
       </ul>
     </div>
