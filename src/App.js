@@ -23,10 +23,10 @@ function App() {
             element={<ItemListContainer message="Bienvenido a CompraOnline" />}
           />
           <Route
-            path="/categoria/:Tipo"
+            path="/categoria/:tipo"
             element={<ItemListContainer message="Bienvenido a CompraOnline" />}
           />
-          <Route path="/detalle" element={<ItemDetailContainer />} />
+          <Route path="/detalle/:id" element={<ItemDetailContainer />} />
         </Routes>
       </BrowserRouter>
     </>

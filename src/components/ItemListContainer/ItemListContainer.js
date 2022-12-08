@@ -29,24 +29,24 @@ import { useParams } from "react-router-dom";
 export const ItemListContainer = ({ message }) => {
   const [data, setData] = useState([]);
 
-  const { Tipo } = useParams();
+  const { tipo } = useParams();
   console.log(data);
-  console.log(Tipo);
+  console.log(tipo);
   useEffect(() => {
     const getData = new Promise((resolve) => {
       setTimeout(() => {
         resolve(listaProductos);
       }, 2000);
     });
-    if (Tipo) {
+    if (tipo) {
       getData.then((res) =>
-        setData(res.filter((producto) => producto.categoria === Tipo))
+        setData(res.filter((producto) => producto.tipo === tipo))
       );
     } else {
       getData.then((res) => setData(res));
     }
-  }, [Tipo]);
-
+  }, [tipo]);
+console.log(listaProductos);
   const onAdd = (cantidad) => {
     console.log(`Compras ${cantidad}`);
   };
