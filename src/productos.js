@@ -4,7 +4,7 @@ const listaProductos = [
     nombre: "SAMSUNG",
     precio: 260000,
     tipo: "TV",
-    img: "./img/samsung.png",
+    img: "samsung.png",
     cantidad: 1,
   },
   {
@@ -12,7 +12,7 @@ const listaProductos = [
     nombre: "LG",
     precio: 190000,
     tipo: "TV",
-    img: "./img/LG.png",
+    img: "LG.png",
     cantidad: 1,
   },
   {
@@ -20,7 +20,7 @@ const listaProductos = [
     nombre: "TLC",
     precio: 130000,
     tipo: "TV",
-    img: "./img/tcl.png",
+    img: "tcl.png",
     cantidad: 1,
   },
   {
@@ -28,7 +28,7 @@ const listaProductos = [
     nombre: "SONY",
     precio: 210000,
     tipo: "TV",
-    img: "./img/sony.png",
+    img: "sony.png",
     cantidad: 1,
   },
   {
@@ -36,7 +36,7 @@ const listaProductos = [
     nombre: "PS5",
     precio: 315000,
     tipo: "CONSOLA",
-    img: "./img/ps5.png",
+    img: "ps5.png",
     cantidad: 1,
   },
   {
@@ -44,7 +44,7 @@ const listaProductos = [
     nombre: "SWITCH",
     precio: 125000,
     tipo: "CONSOLA",
-    img: "./img/switch.png",
+    img: "switch.png",
     cantidad: 1,
   },
   {
@@ -52,7 +52,7 @@ const listaProductos = [
     nombre: "SERIES",
     precio: 190000,
     tipo: "CONSOLA",
-    img: "./img/series.png",
+    img: "series.png",
     cantidad: 1,
   },
 ];

@@ -33,20 +33,26 @@ export const ItemListContainer = ({ message }) => {
   console.log(data);
   console.log(tipo);
   useEffect(() => {
-    const getData = new Promise((resolve) => {
-      setTimeout(() => {
-        resolve(listaProductos);
-      }, 2000);
-    });
-    if (tipo) {
-      getData.then((res) =>
-        setData(res.filter((producto) => producto.tipo === tipo))
-      );
-    } else {
-      getData.then((res) => setData(res));
-    }
+    const bk = async () => {
+      try {
+        const Newdata = await (await fetch("../data/productos.json")).json();
+
+        if (tipo) {
+          setData(Newdata.filter((producto) => producto.tipo === tipo));
+          // data.then((res) =>
+          //   setData(res.filter((producto) => producto.tipo === tipo))
+          // );
+        } else {
+          setData(Newdata);
+          // getData.then((res) => setData(res));
+        }
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    bk();
   }, [tipo]);
-console.log(listaProductos);
+
   const onAdd = (cantidad) => {
     console.log(`Compras ${cantidad}`);
   };
