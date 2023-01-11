@@ -1,70 +1,52 @@
-# Getting Started with Create React App
+# Proyecto ecommerce CompraLibre-ReactJS
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Esta app **CompraLibre** se creo con el fin de facilitar la compra y adquisicion de productos a traves de la web, donde el usuario puede ver precios, aspectos del producto que se encuentran en la base de datos, interaccion con el formulario donde el usuario envia sus datos de compra a la base de datos..
 
-## Available Scripts
+# Documentación
 
-In the project directory, you can run:
+## Dependecias usadas
 
-### `npm start`
+- React-router-dom (Navegación de la web)
+- React-bootstrap
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Base de Datos NoSQL
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- FireBase, la cual se implemento para la base de datos y storage.
 
-### `npm test`
+## Organizacion de componentes:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+#### En el index.js se implementa el Firebase, luego en App.js se importan las librerias utilizadas, la cual reac-router-dom nos perminte navegar entre los diferentes componentes creados:
 
-### `npm run build`
+- Home (Pagina principal)
+- ItemListContainer (Donde muestra todos los productos)
+- ItemDetailContainer (Podemos ver el producto a detalle)
+- Cart (Ver los productos que estan en el carrito de compras)
+- CheckOut (Tenemos el formulario de compra).
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Componentes Contenedores:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- ItemListContainer
+- ItemDetailContainer
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Estos componentes son los que utilizamos para traer la informacion de la base de datos (FireBase) utilizando el useEffect.
 
-### `npm run eject`
+## Componentes Presentacionales:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- ItemDetail: nos encargamos de obtener las props pasadas desde **ItemDetailContainer** hacia **ItemDetail**.
+- ItemList: realizamos el método de **JavaScript** (map) que nos permite iterar / recorrer, nuestros productos previamente guardados en un estado llamado **Cart** en el Contexto que sera explicado en breve.
+- Item: por medio de props , pasamos de **ItemList** hacia **Item**, con el valor data con su respectiva key.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Contexto
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+A traves de este Context pasamos funciones y demas informaciones hacia cualquier componente que este englobado en nuestro context, en este caso se encierran con CartProvider.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Consumidores
 
-## Learn More
+- **ItemDetail**: Usa el context para usar la funcion addProduct la que permite añadir los productos al carro.
+- **CheckOut**: Usa el context para obtener los productos seleccionados y poder unificarlos en el formulario de compra.
+- **Cart**: Utiliza las funciones Eliminar producto, total de compra, eliminar por unidad, vaciar carrito del context.
+- **CartWidget**: Usa la funcion de calcular la cantidad de productos que selecciono el usuario para mostrando en el contador del carrito en el Navbar.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## CheckOut
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Al final de la compra, una vez llenado el formulario y elegir los productos deseados, al terminar la compra se envian estos datos hacia el FireStore, donde se crea una nueva Collection la cual se llama Compra, donde se puede ver los datos ingresados por el usuaario, los productos seleccionados y la suma total del precio de los productos.

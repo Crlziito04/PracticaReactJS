@@ -2,15 +2,22 @@ import React from "react";
 import "./item.css";
 import { Link } from "react-router-dom";
 
-const Item = ({ info }) => {
-  // const prueba = process.env.PUBLIC_URL + "/img/" + info.img;
-  // console.log(prueba);
-  console.log(info);
+const Item = ({ data }) => {
   return (
-    <Link to={`/detalle/${info.id}`} className="producto">
-      <img src={"/img/" + info.img} alt="" />
-      <p>{info.nombre}</p>
-    </Link>
+    <>
+      {
+        <div className="contain-card">
+          <p className="paraGP">{data.nombre}</p>
+          <img src={data.img} alt={data.id} className="imgCard" />
+          <p className="paraGP">${data.precio}</p>
+          <div className="buttonCont">
+            <Link to={`/item/${data.id}`} className="buttonHand3">
+              Ver Detalle
+            </Link>
+          </div>
+        </div>
+      }
+    </>
   );
 };
 export default Item;

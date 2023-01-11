@@ -4,30 +4,36 @@ import Navbar from "./components/NavBar/NavBar.js";
 import ItemListContainer from "./components/ItemListContainer/ItemListContainer";
 import ItemDetailContainer from "./components/ItemDetailContainer/ItemDetailContainer";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Cart from "./components/Cart/Cart";
+import Title from "./components/Title/Title";
+import CartProvider from "./context/CartContext";
+import CheckOut from "./components/CheckOut/CheckOut";
 
 function App() {
-  //   const user = {
-  //     nombre: "CarlosMolina",
-  //   };
-  //   const saludarFn = (name) => {
-  //     alert(`Hola ${name}`);
-  //   };
-
   return (
     <>
       <BrowserRouter>
-        <Navbar />
-        <Routes>
-          <Route
-            path="/"
-            element={<ItemListContainer message="Bienvenido a CompraOnline" />}
-          />
-          <Route
-            path="/categoria/:tipo"
-            element={<ItemListContainer message="Bienvenido a CompraOnline" />}
-          />
-          <Route path="/detalle/:id" element={<ItemDetailContainer />} />
-        </Routes>
+        <CartProvider>
+          <Navbar />
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <ItemListContainer message="Bienvenido a CompraOnline" />
+              }
+            />
+            <Route path="/" element={<Title />} />
+            <Route
+              path="/categoria/:categoriaId"
+              element={
+                <ItemListContainer message="Bienvenido a CompraOnline" />
+              }
+            />
+            <Route path="/item/:id" element={<ItemDetailContainer />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/form" element={<CheckOut />} />
+          </Routes>
+        </CartProvider>
       </BrowserRouter>
     </>
   );

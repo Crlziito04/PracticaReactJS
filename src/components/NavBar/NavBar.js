@@ -2,33 +2,29 @@ import React from "react";
 import "../CarWidget/CarWidget.js";
 import CarWidget from "../CarWidget/CarWidget.js";
 import "./NavBar.css";
-import { NavLink, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
     <div className="menu-container">
       <div className="nav-logo">
-        <NavLink as={Link} className="nav-link" to="/">
+        <Link to="/" className="nav-link">
           CompraOnline
-        </NavLink>
+        </Link>
       </div>
       <ul className="nav-list">
         <li>
-          <NavLink as={Link} className="nav-list" to="/categoria/TV">
+          <Link className="nav-list" to="/categoria/TV">
             TV
-          </NavLink>
+          </Link>
         </li>
         <li>
-          <NavLink as={Link} className="nav-list" to="/categoria/CONSOLA">
+          <Link className="nav-list" to="/categoria/CONSOLA">
             Consolas
-          </NavLink>
-        </li>
-        <li>
-          <NavLink as={Link} className="nav-list" to="cart">
-            <CarWidget />
-          </NavLink>
+          </Link>
         </li>
       </ul>
+      <CarWidget />
     </div>
   );
 };

@@ -1,11 +1,11 @@
 import React from "react";
 import "./Title.css";
 
-const Title = ({ greenting }) => {
-  console.log({ greenting });
+const Title = ({ greeting }) => {
+  console.log({ greeting });
   return (
     <div className="saludo">
-      <h1>{greenting}</h1>
+      <h1>{greeting}</h1>
     </div>
   );
 };
